@@ -4,9 +4,12 @@ body {
   background-color: #7c87c1;
 }
 
-#nav-bar {
+#navi {
   background-color: #dadcea;
   display: inline;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 img {
