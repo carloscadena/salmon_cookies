@@ -1,1 +1,32 @@
-saf
+body {
+  text-align: center;
+  width: 90%;
+  background-color: #7c87c1;
+}
+
+#nav-bar {
+  background-color: #dadcea;
+  display: inline;
+}
+
+img {
+  margin: auto;
+  width: 75%;
+}
+
+h1 {
+  line-height: 0px;
+  text-align: center;
+}
+
+div {
+  display: inline-block;
+  margin: 10px;
+}
+
+#main-text {
+  font-family: 'Slabo 27px', serif;
+  background-color: #dadcea;
+  padding: 50px;
+  border-radius: 25px;
+}
