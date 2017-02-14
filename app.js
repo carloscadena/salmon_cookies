@@ -95,21 +95,20 @@ var resultsArrayAlki = storeFive.randomCustomers();
 console.log(resultsArrayAlki);
 
 var storeHours = [
-  '6AM',
-  '7AM',
-  '8AM',
-  '9AM',
-  '10AM',
-  '11AM',
-  '12AM',
-  '1PM',
-  '2PM',
-  '3PM',
-  '4PM',
-  '5PM',
-  '6PM',
-  '7PM',
-  '8PM'
+  '6:00 AM',
+  '7:00 AM',
+  '8:00 AM',
+  '9:00 AM',
+  '10:00 AM',
+  '11:00 AM',
+  '12:00 PM',
+  '1:00 PM',
+  '2:00 PM',
+  '3:00 PM',
+  '4:00 PM',
+  '5:00 PM',
+  '6:00 PM',
+  '7:00 PM',
 ];
 
 var firstAndPiketotalCookies = 0;
@@ -121,7 +120,6 @@ for (var i = 0; i < resultsArrayPike.length; i++) {
   firstAndPikeListElement.appendChild(firstAndPikeElement);
   firstAndPiketotalCookies += resultsArrayPike[i];
 }
-
 var firstAndPikeTotal = document.createElement('li');
 firstAndPikeTotal.textContent = 'Total: ' + firstAndPiketotalCookies;
 firstAndPikeListElement.appendChild(firstAndPikeTotal);
@@ -161,11 +159,6 @@ for (var i = 0; i < resultsArrayCapHill.length; i++) {
 var capHillTotal = document.createElement('li');
 capHillTotal.textContent = 'Total: ' + capHillTotalCookies;
 capHillListElement.appendChild(capHillTotal);
-
-
-
-
-
 
 var alkiTotalCookies = 0;
 var alkiListElement = document.getElementById('alkiList');
