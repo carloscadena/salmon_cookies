@@ -50,7 +50,7 @@ var storeHours = [
 
 var headerEl = document.createElement('thead');
 var headerRow = document.createElement('tr');
-
+//add empty <th> for offset
 headerRow.appendChild(document.createElement('th'));
 
 for (var i = 0; i < storeHours.length; i++) {
@@ -82,6 +82,9 @@ for (var i = 0; i < stores.length; i++) {
 
   }
 }
+var footEl = document.createElement('tfoot');
+var footRow = document.createElement('tr');
+footEl.textContent = totalCookies;
 
 
 document.body.appendChild(tableEl);
