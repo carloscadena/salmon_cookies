@@ -4,6 +4,10 @@ body {
   background-color: #7c87c1;
 }
 
+table {
+  border: 1px solid;
+}
+
 #navi {
   background-color: #dadcea;
   display: inline;
