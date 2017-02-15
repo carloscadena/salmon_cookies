@@ -8,11 +8,7 @@ table {
   border: 1px solid;
 }
 
-#navi {
-  background-color: #dadcea;
-  display: inline;
-  margin: 0;
-  padding: 0;
+#navi-list {
   list-style-type: none;
 }
 
@@ -27,8 +23,11 @@ h1 {
 }
 
 div {
-  display: inline-block;
-  margin: 10px;
+  margin: 30px;
+  background-color: #dadcea;
+  display: inline-block;;
+  padding: 10px;
+  border-radius: 25px;
 }
 
 #main-text {
@@ -36,4 +35,14 @@ div {
   background-color: #dadcea;
   padding: 50px;
   border-radius: 25px;
+}
+
+label, input {
+  display: block;
+  border-radius: 15px;
+  text-align: center;
+}
+#new-store-form {
+  width: 50%;
+  margin: auto;
 }

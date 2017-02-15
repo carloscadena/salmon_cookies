@@ -9,8 +9,8 @@
   <body>
     <div>
         <h1>Welcome to Pat's Salmon Cookies!</h1>
-        <div id="navi">
-          <ul>
+        <div>
+          <ul id="navi-list">
             <li><a href>Home</a></li>
             <li><a href>Locations</a></li>
             <li><a href>Recipes</a></li>
@@ -37,6 +37,22 @@
         </ul>
       </p>
     </div>
-
+    <div class="form">
+      <form id="new-store-form">
+        <fieldset>
+          <legend>Enter New Cookie Store Info</legend>
+          <label for="cookieStoreName">Cookie Store Name:</label>
+          <input type="text" name="cookieStoreName">
+          <label for="minCust">minimum Customers/Hour</label>
+          <input type="text" name="minCust">
+          <label for="maxCust">Maximimum Customers/Hour</label>
+          <input type="text" name="maxCust>
+          <label for="avgCookies">Average Cookies/Customers</label>
+          <input type="text" name="avgCookies">
+          <button type="submit" name="button">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+    <script src="app.js" type="text/javascript"></script>
   </body>
 </html>
