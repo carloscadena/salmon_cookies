@@ -46,6 +46,7 @@ var storeHours = [
   '5:00 PM',
   '6:00 PM',
   '7:00 PM',
+  'Daily Total'
 ];
 
 var headerEl = document.createElement('thead');
@@ -61,30 +62,67 @@ for (var i = 0; i < storeHours.length; i++) {
 headerEl.appendChild(headerRow);
 tableEl.appendChild(headerEl);
 
-var totalCookies = 0;
-
 for (var i = 0; i < stores.length; i++) {
   var currentStore = stores[i];
   currentStore.randomCustomers();
-
+  var totalCookies = 0;
   var rowEl = document.createElement('tr');
   tableEl.appendChild(rowEl);
 
   var nameEl = document.createElement('th');
   nameEl.textContent = currentStore.name;
   rowEl.appendChild(nameEl);
+
   for (var j = 0; j < currentStore.cookieSalesPerHour.length; j++) {
 
-    var hourEl = document.createElement('td');
-    hourEl.textContent = currentStore.cookieSalesPerHour[j];
-    rowEl.appendChild(hourEl);
+    var storeTotalEl = document.createElement('td');
+    storeTotalEl.textContent = currentStore.cookieSalesPerHour[j];
+    rowEl.appendChild(storeTotalEl);
     totalCookies += currentStore.cookieSalesPerHour[j];
-
   }
+  var storeTotalEl = document.createElement('td');
+  storeTotalEl.textContent = totalCookies;
+  rowEl.appendChild(storeTotalEl);
 }
+
+var rowEl = document.createElement('tr');
+tableEl.appendChild(rowEl);
+var hourlyTotalEl = document.createElement('th');
+hourlyTotalEl.textContent = 'Totals';
+rowEl.appendChild(hourlyTotalEl);
+
 var footEl = document.createElement('tfoot');
 var footRow = document.createElement('tr');
-footEl.textContent = totalCookies;
+footEl.appendChild(footRow);
 
+for (var j = 0; j < storeHours.length; j++) {
+  var hourlyTotal = 0;
+  for (var i = 0; i < stores.length; i++) {
+    var currentStore = stores[i];
+    hourlyTotal += currentStore.cookieSalesPerHour[j];
+  }
+  var hourEl = document.createElement('td');
+  hourEl.textContent = hourlyTotal;
+  rowEl.appendChild(hourEl);
+}
 
 document.body.appendChild(tableEl);
+
+
+// var storeFormEl = document.getElementById('new-store-form');
+//
+// storeFormEl.addEventListener('submit', handleSubmit);
+//
+// function handleSubmit(event){
+//   event.preventDefault();
+//   event.stopPropagation();
+//
+//   var storeName = event.target.cookieStoreName.value;
+//   var customerMin = parseInt(event.target.minCust.value);
+//   var maxCustomers = parseInt(event.target.maxCust.value);
+//   var avgCookies = parseInt(event.target.avgCookies.value);
+//   console.log('User pressed submit button on form');
+//
+//   var store = new CookieStore(name, minCust, maxCust, avgCookieSale);
+//   console.log(storeName);
+// }
