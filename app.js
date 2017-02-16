@@ -85,15 +85,13 @@ for (var i = 0; i < stores.length; i++) {
   rowEl.appendChild(storeTotalEl);
 }
 
-var rowEl = document.createElement('tr');
-tableEl.appendChild(rowEl);
+var footEl = document.createElement('tfoot');
+tableEl.appendChild(footEl);
+// var footRow = document.createElement('tr');
+// footEl.appendChild(footRow);
 var hourlyTotalEl = document.createElement('th');
 hourlyTotalEl.textContent = 'Totals';
-rowEl.appendChild(hourlyTotalEl);
-
-var footEl = document.createElement('tfoot');
-var footRow = document.createElement('tr');
-footEl.appendChild(footRow);
+footEl.appendChild(hourlyTotalEl);
 
 for (var j = 0; j < storeHours.length; j++) {
   var hourlyTotal = 0;
@@ -103,26 +101,47 @@ for (var j = 0; j < storeHours.length; j++) {
   }
   var hourEl = document.createElement('td');
   hourEl.textContent = hourlyTotal;
-  rowEl.appendChild(hourEl);
+  footEl.appendChild(hourEl);
 }
 
 document.body.appendChild(tableEl);
 
+var storeFormEl = document.getElementById('new-store-form');
 
-// var storeFormEl = document.getElementById('new-store-form');
-//
-// storeFormEl.addEventListener('submit', handleSubmit);
-//
-// function handleSubmit(event){
-//   event.preventDefault();
-//   event.stopPropagation();
-//
-//   var storeName = event.target.cookieStoreName.value;
-//   var customerMin = parseInt(event.target.minCust.value);
-//   var maxCustomers = parseInt(event.target.maxCust.value);
-//   var avgCookies = parseInt(event.target.avgCookies.value);
-//   console.log('User pressed submit button on form');
-//
-//   var store = new CookieStore(name, minCust, maxCust, avgCookieSale);
-//   console.log(storeName);
-// }
+storeFormEl.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event){
+  event.preventDefault();
+  event.stopPropagation();
+
+  var storeName = event.target.storeName.value;
+  var minCust = parseInt(event.target.minCust.value);
+  var maxCust = parseInt(event.target.maxCust.value);
+  var avgCookies = parseFloat(event.target.avgCookies.value);
+  console.log('User pressed submit button on form');
+  console.log(minCust, maxCust);
+
+  var store = new CookieStore(storeName, minCust, maxCust, avgCookies);
+  console.log(store);
+
+  var rowEl = document.createElement('tr');
+  tableEl.appendChild(rowEl);
+  var storeRowEl = document.createElement('th');
+  storeRowEl.textContent = store.name;
+  rowEl.appendChild(storeRowEl);
+
+  store.randomCustomers();
+  console.log(store.cookieSalesPerHour);
+
+  for (var j = 0; j < store.cookieSalesPerHour.length; j++) {
+    var storeTotalEl = document.createElement('td');
+    storeTotalEl.textContent = store.cookieSalesPerHour[j];
+    rowEl.appendChild(storeTotalEl);
+    totalCookies += currentStore.cookieSalesPerHour[j];
+  }
+
+  var storeTotalEl = document.createElement('td');
+  storeTotalEl.textContent = totalCookies;
+  rowEl.appendChild(storeTotalEl);
+
+}
