@@ -88,6 +88,7 @@ for (var i = 0; i < stores.length; i++) {
 
 function appendFooter(){
   var footEl = document.createElement('tfoot');
+  footEl.setAttribute('id', 'tableFooter');
   tableEl.appendChild(footEl);
   var hourlyTotalEl = document.createElement('th');
   hourlyTotalEl.textContent = 'Totals';
@@ -125,7 +126,7 @@ function handleSubmit(event){
 
   var store = new CookieStore(storeName, minCust, maxCust, avgCookies);
   console.log(store);
-
+  stores.push(store);
   var rowEl = document.createElement('tr');
   tableEl.appendChild(rowEl);
   var storeRowEl = document.createElement('th');
@@ -145,5 +146,7 @@ function handleSubmit(event){
   var storeTotalEl = document.createElement('td');
   storeTotalEl.textContent = tCookies;
   rowEl.appendChild(storeTotalEl);
-
+  var elem = document.getElementById('tableFooter');
+  elem.remove();
+  appendFooter();
 }
