@@ -96,17 +96,22 @@ function appendFooter(){
   var hourlyTotalEl = document.createElement('th');
   hourlyTotalEl.textContent = 'Totals';
   footEl.appendChild(hourlyTotalEl);
-
-  for (var j = 0; j < storeHours.length; j++) {
+  var dailyTotals = 0;
+  for (var j = 0; j < storeHours.length - 1; j++) {
     var hourlyTotal = 0;
     for (var i = 0; i < stores.length; i++) {
       var currentStore = stores[i];
       hourlyTotal += currentStore.cookieSalesPerHour[j];
     }
+    dailyTotals += hourlyTotal;
+    console.log(hourlyTotal);
     var hourEl = document.createElement('td');
     hourEl.textContent = hourlyTotal;
     footEl.appendChild(hourEl);
   }
+  var allTheCookies = document.createElement('td');
+  allTheCookies.textContent = dailyTotals;
+  footEl.appendChild(allTheCookies);
 }
 appendFooter();
 
