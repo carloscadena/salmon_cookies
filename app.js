@@ -1,24 +1,25 @@
 'use strict';
 
 //store constructor
-function CookieStore(name, minCust, maxCust, avgCookieSale){
+var CookieStore = function(name, minCust, maxCust, avgCookieSale){
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookieSale = avgCookieSale;
   this.cookieSalesPerHour = [];
-  this.getRandomNum = function() {
-    return Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-  };
-  this.randomCustomers = function (){
-    for (var i = 6; i < 20; i++) {
-      var hourlySales = this.getRandomNum(this.minCust, this.maxCust);
-      var eachHour = parseInt(hourlySales * this.avgCookieSale);
-      this.cookieSalesPerHour.push(eachHour);
-    }
-    return this.cookieSalesPerHour;
-  };
-}
+};
+
+CookieStore.prototype.randomCustomers = function (){
+  for (var i = 6; i < 20; i++) {
+    var hourlySales = this.getRandomNum(this.minCust, this.maxCust);
+    var eachHour = parseInt(hourlySales * this.avgCookieSale);
+    this.cookieSalesPerHour.push(eachHour);
+  }
+};
+
+CookieStore.prototype.getRandomNum = function() {
+  return Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
+};
 
 //store objects
 var storeOne = new CookieStore('First and Pike', 23, 65, 6.3);
@@ -87,8 +88,6 @@ for (var i = 0; i < stores.length; i++) {
 
 var footEl = document.createElement('tfoot');
 tableEl.appendChild(footEl);
-// var footRow = document.createElement('tr');
-// footEl.appendChild(footRow);
 var hourlyTotalEl = document.createElement('th');
 hourlyTotalEl.textContent = 'Totals';
 footEl.appendChild(hourlyTotalEl);
@@ -131,17 +130,17 @@ function handleSubmit(event){
   rowEl.appendChild(storeRowEl);
 
   store.randomCustomers();
-  console.log(store.cookieSalesPerHour);
-
+  var tCookies = 0;
   for (var j = 0; j < store.cookieSalesPerHour.length; j++) {
     var storeTotalEl = document.createElement('td');
     storeTotalEl.textContent = store.cookieSalesPerHour[j];
+    console.log(store.cookieSalesPerHour[j]);
     rowEl.appendChild(storeTotalEl);
-    totalCookies += currentStore.cookieSalesPerHour[j];
+    tCookies += store.cookieSalesPerHour[j];
   }
-
+console.log(tCookies);
   var storeTotalEl = document.createElement('td');
-  storeTotalEl.textContent = totalCookies;
+  storeTotalEl.textContent = tCookies;
   rowEl.appendChild(storeTotalEl);
 
 }
