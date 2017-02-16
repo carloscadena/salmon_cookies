@@ -85,16 +85,13 @@ for (var i = 0; i < stores.length; i++) {
   rowEl.appendChild(storeTotalEl);
 }
 
-var rowEl = document.createElement('tr');
-tableEl.appendChild(rowEl);
-var hourlyTotalEl = document.createElement('th');
-hourlyTotalEl.textContent = 'Totals';
-rowEl.appendChild(hourlyTotalEl);
-
 var footEl = document.createElement('tfoot');
 tableEl.appendChild(footEl);
-var footRow = document.createElement('tr');
-footEl.appendChild(footRow);
+// var footRow = document.createElement('tr');
+// footEl.appendChild(footRow);
+var hourlyTotalEl = document.createElement('th');
+hourlyTotalEl.textContent = 'Totals';
+footEl.appendChild(hourlyTotalEl);
 
 for (var j = 0; j < storeHours.length; j++) {
   var hourlyTotal = 0;
@@ -104,7 +101,7 @@ for (var j = 0; j < storeHours.length; j++) {
   }
   var hourEl = document.createElement('td');
   hourEl.textContent = hourlyTotal;
-  rowEl.appendChild(hourEl);
+  footEl.appendChild(hourEl);
 }
 
 document.body.appendChild(tableEl);

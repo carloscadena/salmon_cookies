@@ -10,13 +10,13 @@
         <fieldset>
           <legend>Enter New Cookie Store Info</legend>
           <label for="storeName">Cookie Store Name:</label>
-          <input type="text" name="storeName">
+          <input type="text" name="storeName" required>
           <label for="minCust">minimum Customers/Hour</label>
-          <input type="text" name="minCust">
+          <input type="number" name="minCust" required>
           <label for="maxCust">Maximimum Customers/Hour</label>
-          <input type="text" name="maxCust">
+          <input type="number" name="maxCust" required>
           <label for="avgCookies">Average Cookies/Customers</label>
-          <input type="text" name="avgCookies">
+          <input type="number" name="avgCookies"required>
           <button type="submit" name="button">Submit</button>
         </fieldset>
       </form>
