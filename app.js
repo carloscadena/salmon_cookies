@@ -92,6 +92,7 @@ hourlyTotalEl.textContent = 'Totals';
 rowEl.appendChild(hourlyTotalEl);
 
 var footEl = document.createElement('tfoot');
+tableEl.appendChild(footEl);
 var footRow = document.createElement('tr');
 footEl.appendChild(footRow);
 
@@ -123,6 +124,27 @@ function handleSubmit(event){
   console.log('User pressed submit button on form');
   console.log(minCust, maxCust);
 
-  var store = new CookieStore(name, minCust, maxCust, avgCookies);
-  console.log(storeName);
+  var store = new CookieStore(storeName, minCust, maxCust, avgCookies);
+  console.log(store);
+
+  var rowEl = document.createElement('tr');
+  tableEl.appendChild(rowEl);
+  var storeRowEl = document.createElement('th');
+  storeRowEl.textContent = store.name;
+  rowEl.appendChild(storeRowEl);
+
+  store.randomCustomers();
+  console.log(store.cookieSalesPerHour);
+
+  for (var j = 0; j < store.cookieSalesPerHour.length; j++) {
+    var storeTotalEl = document.createElement('td');
+    storeTotalEl.textContent = store.cookieSalesPerHour[j];
+    rowEl.appendChild(storeTotalEl);
+    totalCookies += currentStore.cookieSalesPerHour[j];
+  }
+
+  var storeTotalEl = document.createElement('td');
+  storeTotalEl.textContent = totalCookies;
+  rowEl.appendChild(storeTotalEl);
+
 }
