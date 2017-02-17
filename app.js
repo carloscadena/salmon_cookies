@@ -53,7 +53,7 @@ var storeFive = new CookieStore('Alki', 2, 16, 4.6);
 var stores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
 
 var tableEl = document.createElement('table');
-tableEl.setAttribute('id', 'table');
+tableEl.setAttribute('id', 'table-border');
 
 var storeHours = [
   '6:00 AM',
